@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "esnext", // 编译的目标是什么版本的
+    "module": "amd", // 指定生成哪个模块系统代码
+    "strict": true, //同时开启 alwaysStrict, noImplicitAny, noImplicitThis 和 strictNullChecks (2.3 以上)
+    // "noImplicitThis": false,
+    // "noImplicitAny": false,
+    "jsx": "preserve", // jsx 的编译方式
+    "jsxFactory": "tsx",
+    "importHelpers": true, //引入帮助（2.1 以上）
+    "moduleResolution": "node", //指定模块解析方式，["classic" : "node"]
+    "experimentalDecorators": true, //允许注解语法
+    "esModuleInterop": true,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true, //允许引入没有默认导出的模块
+    "sourceMap": true, //生成对应的 map 文件
+    "baseUrl": ".", //与 path 一同定义模块查找的路径，详细参考
+    "types": [ //指定引入的类型声明文件，默认是自动引入所有声明文件，一旦指定该选项，则会禁用自动引入，改为只引入指定的类型声明文件，如果指定空数组[]则不引用任何文件
+      "webpack-env"
+    ],
+    "paths": { // 指定模块的路径，和baseUrl有关联，和webpack中resolve.alias配置一样
+      "@/*": [ //指定后可以在文件之直接 import * from 'src';
+        "src/*"
+      ]
+    },
+    "lib": [ // 编译过程中需要引入的库文件的列表
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [ // 指定一个匹配列表（属于自动指定该路径下的所有ts相关文件）
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+  "exclude": [ // 指定一个排除列表（include的反向操作）
+    "node_modules"
+  ]
+}
